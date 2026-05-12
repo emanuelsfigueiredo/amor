@@ -1,171 +1,568 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Para Minha Namorada</title>
-    <style>
-        @page {
-            size: A4;
-            margin: 0;
-            background-color: #f0ead6;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0ead6;
-            color: #2d5a27;
-        }
-        .header {
-            background-color: #2d5a27;
-            color: #f0ead6;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 32pt;
-            letter-spacing: 2px;
-        }
-        .header p {
-            font-style: italic;
-            font-size: 14pt;
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-        .container {
-            padding: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-            border-left: 8px solid #a3b18a;
-            transition: transform 0.3s ease;
-            animation: fadeIn 1s ease-out;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        h2 {
-            color: #2d5a27;
-            margin-top: 0;
-            font-size: 18pt;
-        }
-        .photo-space {
-            width: 100%;
-            height: 500px; 
-            background-color: #f1f1f1; /* Fundo sutil para fotos que não preenchem tudo */
-            border: 12px solid #fff; /* Moldura estilo fotografia */
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .photo-space:hover {
-            transform: scale(1.02) rotate(1deg);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-        .photo-space img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Garante que a foto inteira apareça sem cortes */
-            display: block;
-            transition: filter 0.3s ease;
-        }
-        .photo-space:hover img {
-            filter: brightness(1.1);
-        }
-        .message {
-            line-height: 1.6;
-            font-size: 12pt;
-            color: #444;
-            text-align: justify;
-        }
-        .quote {
-            text-align: center;
-            font-size: 16pt;
-            font-style: italic;
-            color: #2d5a27;
-            margin: 40px 0;
-            padding: 20px;
-            border-top: 1px solid #a3b18a;
-            border-bottom: 1px solid #a3b18a;
-        }
-        .footer {
-            text-align: center;
-            padding: 40px;
-            color: #a3b18a;
-            font-size: 10pt;
-        }
-        .heart {
-            color: #2d5a27;
-            font-size: 24pt;
-            margin-bottom: 10px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* Ajustes para telas pequenas (celular) */
-        @media (max-width: 600px) {
-            .moments-grid {
-                flex-direction: column;
-            }
-            .photo-space {
-                height: 400px !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosso Primeiro Mês ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background: #0f0f0f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* ========================= */
+    /* FUNDO ANIMADO */
+    /* ========================= */
+
+    .background{
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle at top, #ff5c8a33, transparent 30%),
+      radial-gradient(circle at bottom, #ff8fab22, transparent 35%),
+      #0f0f0f;
+      z-index:-3;
+    }
+
+    .stars{
+      position:fixed;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      z-index:-2;
+    }
+
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:white;
+      border-radius:50%;
+      animation: blink 3s infinite;
+    }
+
+    @keyframes blink{
+      0%,100%{
+        opacity:0.2;
+      }
+      50%{
+        opacity:1;
+      }
+    }
+
+    /* ========================= */
+    /* HERO */
+    /* ========================= */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:30px;
+      position:relative;
+    }
+
+    .hero-content{
+      animation:fadeIn 2s ease;
+    }
+
+    .hero h1{
+      font-size:7rem;
+      font-family:'Great Vibes', cursive;
+      color:#ff9ebb;
+      text-shadow:0 0 25px #ff4f81;
+    }
+
+    .hero h2{
+      margin-top:20px;
+      font-size:2rem;
+      font-weight:300;
+      letter-spacing:2px;
+      color:#ffe3ec;
+    }
+
+    .hero p{
+      max-width:750px;
+      margin:30px auto;
+      font-size:1.2rem;
+      line-height:2;
+      color:#f8dce5;
+    }
+
+    .heart{
+      font-size:5rem;
+      animation:pulse 1.5s infinite;
+      margin-bottom:20px;
+    }
+
+    /* ========================= */
+    /* BOTÃO */
+    /* ========================= */
+
+    .btn{
+      padding:18px 40px;
+      border:none;
+      border-radius:50px;
+      background:linear-gradient(45deg,#ff4f81,#ff7096);
+      color:white;
+      font-size:1rem;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.4s;
+      box-shadow:0 0 20px #ff4f8180;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px) scale(1.05);
+      box-shadow:0 0 35px #ff4f81;
+    }
+
+    /* ========================= */
+    /* CARTA */
+    /* ========================= */
+
+    .letter-section{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:60px 20px;
+    }
+
+    .letter{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
+      backdrop-filter:blur(15px);
+      padding:50px;
+      border-radius:30px;
+      max-width:900px;
+      box-shadow:0 0 30px rgba(255,79,129,0.2);
+      animation:float 5s ease-in-out infinite;
+    }
+
+    .letter h3{
+      font-size:3rem;
+      margin-bottom:30px;
+      color:#ffb3c6;
+      font-family:'Great Vibes', cursive;
+      text-align:center;
+    }
+
+    .letter p{
+      line-height:2.2;
+      font-size:1.15rem;
+      color:#ffe8ef;
+      text-align:justify;
+    }
+
+    /* ========================= */
+    /* CONTADOR */
+    /* ========================= */
+
+    .counter{
+      margin-top:40px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .box{
+      width:120px;
+      height:120px;
+      background:rgba(255,255,255,0.08);
+      border-radius:25px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      backdrop-filter:blur(10px);
+      box-shadow:0 0 20px rgba(255,255,255,0.05);
+    }
+
+    .box span{
+      font-size:2rem;
+      font-weight:bold;
+      color:#ff9ebb;
+    }
+
+    .box p{
+      margin-top:5px;
+      font-size:0.9rem;
+      color:#ffe3ec;
+    }
+
+    /* ========================= */
+    /* GALERIA */
+    /* ========================= */
+
+    .gallery{
+      padding:100px 20px;
+      text-align:center;
+    }
+
+    .gallery h2{
+      font-size:4rem;
+      font-family:'Great Vibes', cursive;
+      margin-bottom:50px;
+      color:#ffb3c6;
+    }
+
+    .photos{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .photo{
+      height:350px;
+      border-radius:25px;
+      overflow:hidden;
+      position:relative;
+      transition:0.5s;
+      cursor:pointer;
+      background:#1f1f1f;
+    }
+
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .photo:hover img{
+      transform:scale(1.1);
+    }
+
+    .photo::after{
+      content:"❤️";
+      position:absolute;
+      font-size:2rem;
+      opacity:0;
+      transition:0.5s;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+    }
+
+    .photo:hover::after{
+      opacity:1;
+    }
+
+    /* ========================= */
+    /* FOOTER */
+    /* ========================= */
+
+    footer{
+      padding:40px 20px;
+      text-align:center;
+      color:#ffd9e3;
+      border-top:1px solid rgba(255,255,255,0.1);
+    }
+
+    footer h2{
+      font-family:'Great Vibes', cursive;
+      font-size:3rem;
+      margin-bottom:10px;
+      color:#ffb3c6;
+    }
+
+    /* ========================= */
+    /* ANIMAÇÕES */
+    /* ========================= */
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.2);
+      }
+      100%{
+        transform:scale(1);
+      }
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* ========================= */
+    /* RESPONSIVO */
+    /* ========================= */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:4rem;
+      }
+
+      .hero h2{
+        font-size:1.3rem;
+      }
+
+      .letter{
+        padding:30px;
+      }
+
+      .gallery h2{
+        font-size:3rem;
+      }
+
+    }
+
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Nossa História</h1>
-        <p>Cada detalhe ao seu lado é um novo capítulo favorito.</p>
+
+  <div class="background"></div>
+
+  <div class="stars" id="stars"></div>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="heart">❤️</div>
+
+      <h1>1 Mês de Nós</h1>
+
+      <h2>O começo da nossa história</h2>
+
+      <p>
+        Talvez um mês pareça pouco para o mundo…
+        mas pra mim foi tempo suficiente pra perceber
+        que você se tornou uma das melhores partes da minha vida.
+      </p>
+
+      <button class="btn" onclick="scrollToLetter()">
+        Ler Nossa História ✨
+      </button>
+
     </div>
 
-    <div class="container">
-        <div class="card">
-            <h2>Onde tudo começou</h2>
-            <div class="photo-space">
-                <img src="eu-e-ju-missa.jpeg" alt="Nossa primeira foto juntos" loading="lazy">
-            </div>
-            <p class="message">
-                Às vezes, o tempo não define a intensidade. Nestas poucas semanas, você transformou meus dias comuns em algo extraordinário. Ver seu sorriso se tornou a melhor parte da minha rotina.
-            </p>
+  </section>
+
+  <!-- CARTA -->
+
+  <section class="letter-section" id="letter">
+
+    <div class="letter">
+
+      <h3>Uma Carta Pra Você 💌</h3>
+
+      <p>
+        Hoje fazemos nosso primeiro mês juntos…
+        e mesmo parecendo pouco tempo,
+        eu sinto como se você já tivesse deixado marcas enormes em mim.
+        <br><br>
+
+        Obrigado por cada conversa,
+        por cada sorriso,
+        por cada momento em que você fez meus dias ficarem mais leves.
+        <br><br>
+
+        Você apareceu na minha vida de uma forma tão bonita,
+        tão natural,
+        que eu simplesmente não consigo imaginar meus dias sem você agora.
+        <br><br>
+
+        Nosso primeiro mês é só o começo…
+        porque eu quero continuar criando memórias,
+        vivendo momentos,
+        acumulando abraços,
+        risadas e sonhos ao seu lado.
+        <br><br>
+
+        Que venham muitos outros meses,
+        anos
+        e capítulos da nossa história. ❤️
+      </p>
+
+      <!-- CONTADOR -->
+
+      <div class="counter">
+
+        <div class="box">
+          <span id="days">30</span>
+          <p>Dias</p>
         </div>
 
-        <div class="quote">
-            "Você é o meu 'verde' favorito: traz paz, esperança e vida para o meu mundo."
+        <div class="box">
+          <span id="hours">720</span>
+          <p>Horas</p>
         </div>
 
-        <div class="card">
-            <h2>Momentos Inesquecíveis</h2>
-            <div class="moments-grid" style="display: flex; gap: 20px;">
-                <div class="photo-space" style="height: 450px; flex: 1;">
-                    <img src="eu-e-ju.jpeg" alt="Nossa melhor aventura" loading="lazy">
-                </div>
-                <div class="photo-space" style="height: 450px; flex: 1;">
-                    <img src="eu-e-ju-resgatame.jpeg" alt="Aquele dia especial" loading="lazy">
-                </div>
-            </div>
-            <p class="message">
-                Cada risada compartilhada e cada conversa até tarde me mostram que encontrei alguém muito especial. Mal posso esperar por todas as fotos que ainda vamos tirar e todas as memórias que vamos criar.
-            </p>
+        <div class="box">
+          <span id="minutes">43200</span>
+          <p>Minutos</p>
         </div>
 
-        <div class="footer">
-            <div class="heart">♥</div>
-            <p>Feito com todo carinho para você.</p>
-        </div>
+      </div>
+
     </div>
+
+  </section>
+
+  <!-- GALERIA -->
+
+  <section class="gallery">
+
+    <h2>Nossos Momentos 📸</h2>
+
+    <div class="photos">
+
+      <div class="photo">
+        <img src="um-mes1.jpg">
+      </div>
+
+      <div class="photo">
+        <img src="um-mes2.jpg">
+      </div>
+
+      <div class="photo">
+        <img src="um-mes3.jpg">
+      </div>
+
+      <div class="photo">
+        <img src="um-mes4.jpg">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>Eu & Você ❤️</h2>
+
+    <p>
+      Nosso primeiro mês de infinitos que ainda virão.
+    </p>
+
+  </footer>
+
+  <script>
+
+    // SCROLL SUAVE
+
+    function scrollToLetter(){
+      document.getElementById("letter")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+    }
+
+    // ESTRELAS
+
+    const stars = document.getElementById("stars");
+
+    for(let i = 0; i < 150; i++){
+
+      const star = document.createElement("div");
+
+      star.classList.add("star");
+
+      star.style.left = Math.random() * 100 + "vw";
+
+      star.style.top = Math.random() * 100 + "vh";
+
+      star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+      star.style.opacity = Math.random();
+
+      stars.appendChild(star);
+    }
+
+    // CORAÇÕES SUBINDO
+
+    function createHeart(){
+
+      const heart = document.createElement("div");
+
+      heart.innerHTML = "❤️";
+
+      heart.style.position = "fixed";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-20px";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      heart.style.opacity = 0.8;
+      heart.style.zIndex = 999;
+      heart.style.pointerEvents = "none";
+
+      document.body.appendChild(heart);
+
+      let position = 0;
+
+      const animation = setInterval(() => {
+
+        position++;
+
+        heart.style.bottom = position + "px";
+
+        heart.style.transform =
+        `translateX(${Math.sin(position / 25) * 20}px)`;
+
+        if(position > window.innerHeight){
+
+          clearInterval(animation);
+          heart.remove();
+
+        }
+
+      },10);
+
+    }
+
+    setInterval(createHeart, 800);
+
+  </script>
+
 </body>
 </html>
