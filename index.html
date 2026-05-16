@@ -1,568 +1,320 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nosso Primeiro Mês ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o meu amor</title>
+    <style>
+        /* Reset de Margens e Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b0b0b;
+            color: #f5f5f7;
+            font-family: 'Times New Roman', Times, serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-  <style>
+        /* Tipografia Premium Rock */
+        h1, h2, h3 {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #d4af37; /* Dourado elegante */
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+        }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+        p {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.8;
+            color: #cccccc;
+            margin: 0 0 15px 0;
+            font-weight: 300;
+        }
 
-    html{
-      scroll-behavior:smooth;
-    }
+        /* Secção 1: Introdução (Mistério) */
+        .section-intro {
+            height: 100vh;
+            display: table;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 70%);
+        }
 
-    body{
-      font-family:'Poppins', sans-serif;
-      background: #0f0f0f;
-      color:white;
-      overflow-x:hidden;
-    }
+        .intro-cell {
+            display: table-cell;
+            vertical-align: middle;
+        }
 
-    /* ========================= */
-    /* FUNDO ANIMADO */
-    /* ========================= */
+        .guitar-strings {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 0 auto 30px auto;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
 
-    .background{
-      position:fixed;
-      width:100%;
-      height:100%;
-      background:
-      radial-gradient(circle at top, #ff5c8a33, transparent 30%),
-      radial-gradient(circle at bottom, #ff8fab22, transparent 35%),
-      #0f0f0f;
-      z-index:-3;
-    }
+        .btn-enter {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 35px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 10pt;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d4af37;
+            background: transparent;
+            border: 1px solid #d4af37;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
 
-    .stars{
-      position:fixed;
-      width:100%;
-      height:100%;
-      overflow:hidden;
-      z-index:-2;
-    }
+        .btn-enter:hover {
+            background: #d4af37;
+            color: #0b0b0b;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
 
-    .star{
-      position:absolute;
-      width:2px;
-      height:2px;
-      background:white;
-      border-radius:50%;
-      animation: blink 3s infinite;
-    }
+        /* Secção 2: Declaração Principal (O Solo) */
+        .section-main {
+            min-height: 100vh;
+            padding: 100px 40px;
+            background-color: #0d0d0d;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
 
-    @keyframes blink{
-      0%,100%{
-        opacity:0.2;
-      }
-      50%{
-        opacity:1;
-      }
-    }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-    /* ========================= */
-    /* HERO */
-    /* ========================= */
+        /* Cartola do Slash em Linhas Douradas Simples */
+        .svg-icon {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 40px auto;
+            fill: none;
+            stroke: #d4af37;
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
 
-    .hero{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:30px;
-      position:relative;
-    }
+        .statement-title {
+            font-size: 24pt;
+            line-height: 1.4;
+            color: #f5f5f7;
+            margin-bottom: 40px;
+            text-transform: none;
+            font-style: italic;
+        }
 
-    .hero-content{
-      animation:fadeIn 2s ease;
-    }
+        .statement-title span {
+            color: #d4af37;
+            display: block;
+            font-size: 28pt;
+            font-weight: bold;
+            font-style: normal;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+        }
 
-    .hero h1{
-      font-size:7rem;
-      font-family:'Great Vibes', cursive;
-      color:#ff9ebb;
-      text-shadow:0 0 25px #ff4f81;
-    }
+        /* Secção 3: Nossa História (Tracklist) */
+        .section-tracks {
+            padding: 100px 40px;
+            background: #0b0b0b;
+        }
 
-    .hero h2{
-      margin-top:20px;
-      font-size:2rem;
-      font-weight:300;
-      letter-spacing:2px;
-      color:#ffe3ec;
-    }
+        .tracklist {
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+            border-left: 1px solid #d4af37;
+            padding-left: 30px;
+            text-align: left;
+            position: relative;
+        }
 
-    .hero p{
-      max-width:750px;
-      margin:30px auto;
-      font-size:1.2rem;
-      line-height:2;
-      color:#f8dce5;
-    }
+        .track-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
 
-    .heart{
-      font-size:5rem;
-      animation:pulse 1.5s infinite;
-      margin-bottom:20px;
-    }
+        .track-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 4px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #0b0b0b;
+            border: 2px solid #d4af37;
+        }
 
-    /* ========================= */
-    /* BOTÃO */
-    /* ========================= */
+        .track-number {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 9pt;
+            color: #8c7623;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
 
-    .btn{
-      padding:18px 40px;
-      border:none;
-      border-radius:50px;
-      background:linear-gradient(45deg,#ff4f81,#ff7096);
-      color:white;
-      font-size:1rem;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.4s;
-      box-shadow:0 0 20px #ff4f8180;
-    }
+        .track-title {
+            font-size: 14pt;
+            color: #f5f5f7;
+            margin-bottom: 10px;
+        }
 
-    .btn:hover{
-      transform:translateY(-5px) scale(1.05);
-      box-shadow:0 0 35px #ff4f81;
-    }
+        /* Secção 4: O Bis (Rodapé) */
+        .section-footer {
+            padding: 100px 40px;
+            text-align: center;
+            background: linear-gradient(180deg, #0b0b0b 0%, #050505 100%);
+        }
 
-    /* ========================= */
-    /* CARTA */
-    /* ========================= */
+        .rose-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 30px;
+            stroke: #a31d1d; /* Vermelho escuro profundo */
+            fill: none;
+            stroke-width: 1.5;
+        }
 
-    .letter-section{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:60px 20px;
-    }
+        .footer-note {
+            font-style: italic;
+            color: #888888;
+            font-size: 12pt;
+            max-width: 400px;
+            margin: 0 auto 20px auto;
+        }
 
-    .letter{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.15);
-      backdrop-filter:blur(15px);
-      padding:50px;
-      border-radius:30px;
-      max-width:900px;
-      box-shadow:0 0 30px rgba(255,79,129,0.2);
-      animation:float 5s ease-in-out infinite;
-    }
-
-    .letter h3{
-      font-size:3rem;
-      margin-bottom:30px;
-      color:#ffb3c6;
-      font-family:'Great Vibes', cursive;
-      text-align:center;
-    }
-
-    .letter p{
-      line-height:2.2;
-      font-size:1.15rem;
-      color:#ffe8ef;
-      text-align:justify;
-    }
-
-    /* ========================= */
-    /* CONTADOR */
-    /* ========================= */
-
-    .counter{
-      margin-top:40px;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .box{
-      width:120px;
-      height:120px;
-      background:rgba(255,255,255,0.08);
-      border-radius:25px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      backdrop-filter:blur(10px);
-      box-shadow:0 0 20px rgba(255,255,255,0.05);
-    }
-
-    .box span{
-      font-size:2rem;
-      font-weight:bold;
-      color:#ff9ebb;
-    }
-
-    .box p{
-      margin-top:5px;
-      font-size:0.9rem;
-      color:#ffe3ec;
-    }
-
-    /* ========================= */
-    /* GALERIA */
-    /* ========================= */
-
-    .gallery{
-      padding:100px 20px;
-      text-align:center;
-    }
-
-    .gallery h2{
-      font-size:4rem;
-      font-family:'Great Vibes', cursive;
-      margin-bottom:50px;
-      color:#ffb3c6;
-    }
-
-    .photos{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-      max-width:1200px;
-      margin:auto;
-    }
-
-    .photo{
-      height:350px;
-      border-radius:25px;
-      overflow:hidden;
-      position:relative;
-      transition:0.5s;
-      cursor:pointer;
-      background:#1f1f1f;
-    }
-
-    .photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:0.5s;
-    }
-
-    .photo:hover img{
-      transform:scale(1.1);
-    }
-
-    .photo::after{
-      content:"❤️";
-      position:absolute;
-      font-size:2rem;
-      opacity:0;
-      transition:0.5s;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-    }
-
-    .photo:hover::after{
-      opacity:1;
-    }
-
-    /* ========================= */
-    /* FOOTER */
-    /* ========================= */
-
-    footer{
-      padding:40px 20px;
-      text-align:center;
-      color:#ffd9e3;
-      border-top:1px solid rgba(255,255,255,0.1);
-    }
-
-    footer h2{
-      font-family:'Great Vibes', cursive;
-      font-size:3rem;
-      margin-bottom:10px;
-      color:#ffb3c6;
-    }
-
-    /* ========================= */
-    /* ANIMAÇÕES */
-    /* ========================= */
-
-    @keyframes pulse{
-      0%{
-        transform:scale(1);
-      }
-      50%{
-        transform:scale(1.2);
-      }
-      100%{
-        transform:scale(1);
-      }
-    }
-
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(40px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @keyframes float{
-      0%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-10px);
-      }
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    /* ========================= */
-    /* RESPONSIVO */
-    /* ========================= */
-
-    @media(max-width:768px){
-
-      .hero h1{
-        font-size:4rem;
-      }
-
-      .hero h2{
-        font-size:1.3rem;
-      }
-
-      .letter{
-        padding:30px;
-      }
-
-      .gallery h2{
-        font-size:3rem;
-      }
-
-    }
-
-  </style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="background"></div>
+    <audio id="bgMusic" src="music/November rain.mp3" loop></audio>
 
-  <div class="stars" id="stars"></div>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <div class="heart">❤️</div>
-
-      <h1>1 Mês de Nós</h1>
-
-      <h2>O começo da nossa história</h2>
-
-      <p>
-        Talvez um mês pareça pouco para o mundo…
-        mas pra mim foi tempo suficiente pra perceber
-        que você se tornou uma das melhores partes da minha vida.
-      </p>
-
-      <button class="btn" onclick="scrollToLetter()">
-        Ler Nossa História ✨
-      </button>
-
-    </div>
-
-  </section>
-
-  <!-- CARTA -->
-
-  <section class="letter-section" id="letter">
-
-    <div class="letter">
-
-      <h3>Uma Carta Pra Você 💌</h3>
-
-      <p>
-        Hoje fazemos nosso primeiro mês juntos…
-        e mesmo parecendo pouco tempo,
-        eu sinto como se você já tivesse deixado marcas enormes em mim.
-        <br><br>
-
-        Obrigado por cada conversa,
-        por cada sorriso,
-        por cada momento em que você fez meus dias ficarem mais leves.
-        <br><br>
-
-        Você apareceu na minha vida de uma forma tão bonita,
-        tão natural,
-        que eu simplesmente não consigo imaginar meus dias sem você agora.
-        <br><br>
-
-        Nosso primeiro mês é só o começo…
-        porque eu quero continuar criando memórias,
-        vivendo momentos,
-        acumulando abraços,
-        risadas e sonhos ao seu lado.
-        <br><br>
-
-        Que venham muitos outros meses,
-        anos
-        e capítulos da nossa história. ❤️
-      </p>
-
-      <!-- CONTADOR -->
-
-      <div class="counter">
-
-        <div class="box">
-          <span id="days">30</span>
-          <p>Dias</p>
+    <section class="section-intro">
+        <div class="intro-cell">
+            <div class="guitar-strings"></div>
+            <h2 style="font-size: 14pt; color: #888888; letter-spacing: 4px;">Existem clássicos memoráveis...</h2>
+            <p style="text-align: center; font-style: italic; color: #555555; margin-top: 10px;">mas apenas uma melodia perfeita.</p>
+            <a href="#solo" class="btn-enter" id="enterBtn">Aumentar o Som</a>
         </div>
+    </section>
 
-        <div class="box">
-          <span id="hours">720</span>
-          <p>Horas</p>
+    <section id="solo" class="section-main">
+        <div class="container">
+            
+            <svg class="svg-icon" viewBox="0 0 100 100">
+                <path d="M25,65 L30,30 L70,30 L75,65 Z" stroke-width="1.5" />
+                <path d="M20,65 L80,65 C85,65 85,71 80,71 L20,71 C15,71 15,65 20,65 Z" stroke-width="1.5" />
+                <line x1="29" y1="58" x2="71" y2="58" />
+                <circle cx="37" cy="58" r="2" />
+                <circle cx="50" cy="58" r="2" />
+                <circle cx="63" cy="58" r="2" />
+                <path d="M50,42 C50,42 47,38 44,38 C41,38 39,40 39,43 C39,47 50,53 50,53 C50,53 61,47 61,43 C61,40 59,38 56,38 C53,38 50,42 50,42 Z" fill="rgba(212,175,55,0.15)" />
+            </svg>
+
+            <h1 class="statement-title">
+                Mas para mim, <br>
+                <span>você é um solo do Slash.</span>
+            </h1>
+
+            <p>
+                Daqueles que param o tempo. Que arrepiam logo na primeira nota e continuam ecoando na mente o dia inteiro, sem pedir licença. Você não é apenas o ritmo constante ou a base que sustenta a música; você é a linha melódica principal, a obra de arte desenhada com precisão absoluta no meio do caos.
+            </p>
+            <p>
+                A tua presença tem a força de um estádio lotado em silêncio, esperando pelo refrão mais bonito. És a harmonia perfeita que transforma qualquer dia comum num clássico inesquecível.
+            </p>
         </div>
+    </section>
 
-        <div class="box">
-          <span id="minutes">43200</span>
-          <p>Minutos</p>
+    <section class="section-tracks">
+        <div class="container">
+            <h2>Nossa Tracklist</h2>
+            <p style="margin-bottom: 40px;">Os capítulos mais marcantes do nosso álbum exclusivo.</p>
+            
+            <div class="tracklist">
+                <div class="track-item">
+                    <span class="track-number">Faixa 01</span>
+                    <h3 class="track-title">A Introdução (O Primeiro Encontro)</h3>
+                    <p>O momento exato em que a melodia começou. Bastaram poucas notas para eu perceber que aquela harmonia iria mudar completamente o ritmo da minha vida.</p>
+                </div>
+                
+                <div class="track-item">
+                    <span class="track-number">Faixa 02</span>
+                    <h3 class="track-title">O Refrão (A Nossa Sintonia)</h3>
+                    <p>A fase em que tudo encaixou. Os sorrisos divididos, as conversas que duram horas e a certeza de que a música fica muito melhor quando tocada a dois.</p>
+                </div>
+                
+                <div class="track-item">
+                    <span class="track-number">Faixa 03</span>
+                    <h3 class="track-title">O Acorde Perfeito (O Presente)</h3>
+                    <p>Onde estamos hoje. Cada detalhe teu compõe a melhor parte do meu dia. És a nota mais alta, vibrante e bonita de toda a composição.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-      </div>
+    <section class="section-footer">
+        <div class="container">
+            <svg class="rose-icon" viewBox="0 0 100 100">
+                <path d="M50,50 C40,40 45,25 55,25 C65,25 65,40 50,50 Z" />
+                <path d="M50,50 C60,40 55,25 45,25 C35,25 35,40 50,50 Z" />
+                <path d="M50,50 C45,60 35,55 35,45 C35,35 50,40 50,50 Z" />
+                <path d="M50,50 C55,60 65,55 65,45 C65,35 50,40 50,50 Z" />
+                <path d="M50,85 L50,85" stroke="#335533" stroke-width="2" />
+                <path d="M50,65 C40,65 35,60 35,60 C35,60 42,70 50,68" stroke="#335533" />
+            </svg>
 
-    </div>
+            <div class="footer-note">
+                "Obrigado por seres a melhor trilha sonora da minha vida."
+            </div>
+            
+            <p style="font-size: 8pt; color: #333333; margin-top: 60px; font-family: 'Segoe UI', sans-serif; letter-spacing: 1px;">
+                Feito com ❤️ especialmente para ti.
+            </p>
+        </div>
+    </section>
 
-  </section>
+    <script>
+        const enterBtn = document.getElementById('enterBtn');
+        const bgMusic = document.getElementById('bgMusic');
 
-  <!-- GALERIA -->
+        enterBtn.addEventListener('click', (e) => {
+            // Evita o comportamento padrão imediato para podermos iniciar o áudio primeiro
+            e.preventDefault();
+            
+            // Inicia o áudio em background (gatilho por interação obrigatório pelo browser)
+            bgMusic.play().catch(error => {
+                console.log("O autoplay foi bloqueado pelo navegador. É necessária a interação do usuário.", error);
+            });
 
-  <section class="gallery">
-
-    <h2>Nossos Momentos 📸</h2>
-
-    <div class="photos">
-
-      <div class="photo">
-        <img src="um-mes1.jpg">
-      </div>
-
-      <div class="photo">
-        <img src="um-mes2.jpg">
-      </div>
-
-      <div class="photo">
-        <img src="um-mes3.jpg">
-      </div>
-
-      <div class="photo">
-        <img src="um-mes4.jpg">
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <h2>Eu & Você ❤️</h2>
-
-    <p>
-      Nosso primeiro mês de infinitos que ainda virão.
-    </p>
-
-  </footer>
-
-  <script>
-
-    // SCROLL SUAVE
-
-    function scrollToLetter(){
-      document.getElementById("letter")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-    }
-
-    // ESTRELAS
-
-    const stars = document.getElementById("stars");
-
-    for(let i = 0; i < 150; i++){
-
-      const star = document.createElement("div");
-
-      star.classList.add("star");
-
-      star.style.left = Math.random() * 100 + "vw";
-
-      star.style.top = Math.random() * 100 + "vh";
-
-      star.style.animationDuration = (Math.random() * 3 + 2) + "s";
-
-      star.style.opacity = Math.random();
-
-      stars.appendChild(star);
-    }
-
-    // CORAÇÕES SUBINDO
-
-    function createHeart(){
-
-      const heart = document.createElement("div");
-
-      heart.innerHTML = "❤️";
-
-      heart.style.position = "fixed";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.bottom = "-20px";
-      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-      heart.style.opacity = 0.8;
-      heart.style.zIndex = 999;
-      heart.style.pointerEvents = "none";
-
-      document.body.appendChild(heart);
-
-      let position = 0;
-
-      const animation = setInterval(() => {
-
-        position++;
-
-        heart.style.bottom = position + "px";
-
-        heart.style.transform =
-        `translateX(${Math.sin(position / 25) * 20}px)`;
-
-        if(position > window.innerHeight){
-
-          clearInterval(animation);
-          heart.remove();
-
-        }
-
-      },10);
-
-    }
-
-    setInterval(createHeart, 800);
-
-  </script>
-
+            // Faz o scroll suave até a seção principal do Solo
+            document.querySelector('#solo').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
