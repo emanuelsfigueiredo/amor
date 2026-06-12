@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o meu amor</title>
+    <style>
+        /* Reset de Margens e Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b0b0b;
+            color: #f5f5f7;
+            font-family: 'Times New Roman', Times, serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Tipografia Premium Rock */
+        h1, h2, h3 {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #d4af37; /* Dourado elegante */
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.8;
+            color: #cccccc;
+            margin: 0 0 15px 0;
+            font-weight: 300;
+        }
+
+        /* Secção 1: Introdução (Mistério) */
+        .section-intro {
+            height: 100vh;
+            display: table;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 70%);
+        }
+
+        .intro-cell {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .guitar-strings {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 0 auto 30px auto;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-enter {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 35px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 10pt;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d4af37;
+            background: transparent;
+            border: 1px solid #d4af37;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        .btn-enter:hover {
+            background: #d4af37;
+            color: #0b0b0b;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Secção 2: Declaração Principal (O Solo) */
+        .section-main {
+            min-height: 100vh;
+            padding: 100px 40px;
+            background-color: #0d0d0d;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Cartola do Slash em Linhas Douradas Simples */
+        .svg-icon {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 40px auto;
+            fill: none;
+            stroke: #d4af37;
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .statement-title {
+            font-size: 24pt;
+            line-height: 1.4;
+            color: #f5f5f7;
+            margin-bottom: 40px;
+            text-transform: none;
+            font-style: italic;
+        }
+
+        .statement-title span {
+            color: #d4af37;
+            display: block;
+            font-size: 28pt;
+            font-weight: bold;
+            font-style: normal;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Secção 3: Nossa História (Tracklist) */
+        .section-tracks {
+            padding: 100px 40px;
+            background: #0b0b0b;
+        }
+
+        .tracklist {
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+            border-left: 1px solid #d4af37;
+            padding-left: 30px;
+            text-align: left;
+            position: relative;
+        }
+
+        .track-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .track-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 4px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #0b0b0b;
+            border: 2px solid #d4af37;
+        }
+
+        .track-number {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 9pt;
+            color: #8c7623;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .track-title {
+            font-size: 14pt;
+            color: #f5f5f7;
+            margin-bottom: 10px;
+        }
+
+        /* Secção 4: O Bis (Rodapé) */
+        .section-footer {
+            padding: 100px 40px;
+            text-align: center;
+            background: linear-gradient(180deg, #0b0b0b 0%, #050505 100%);
+        }
+
+        .rose-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 30px;
+            stroke: #a31d1d; /* Vermelho escuro profundo */
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .footer-note {
+            font-style: italic;
+            color: #888888;
+            font-size: 12pt;
+            max-width: 400px;
+            margin: 0 auto 20px auto;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" src="music/November rain.mp3" loop></audio>
+
+    <section class="section-intro">
+        <div class="intro-cell">
+            <div class="guitar-strings"></div>
+            <h2 style="font-size: 14pt; color: #888888; letter-spacing: 4px;">Existem clássicos memoráveis...</h2>
+            <p style="text-align: center; font-style: italic; color: #555555; margin-top: 10px;">mas apenas uma melodia perfeita.</p>
+            <a href="#solo" class="btn-enter" id="enterBtn">Aumentar o Som</a>
+        </div>
+    </section>
+
+    <section id="solo" class="section-main">
+        <div class="container">
+            
+            <svg class="svg-icon" viewBox="0 0 100 100">
+                <path d="M25,65 L30,30 L70,30 L75,65 Z" stroke-width="1.5" />
+                <path d="M20,65 L80,65 C85,65 85,71 80,71 L20,71 C15,71 15,65 20,65 Z" stroke-width="1.5" />
+                <line x1="29" y1="58" x2="71" y2="58" />
+                <circle cx="37" cy="58" r="2" />
+                <circle cx="50" cy="58" r="2" />
+                <circle cx="63" cy="58" r="2" />
+                <path d="M50,42 C50,42 47,38 44,38 C41,38 39,40 39,43 C39,47 50,53 50,53 C50,53 61,47 61,43 C61,40 59,38 56,38 C53,38 50,42 50,42 Z" fill="rgba(212,175,55,0.15)" />
+            </svg>
+
+            <h1 class="statement-title">
+                Mas para mim, <br>
+                <span>você é um solo do Slash.</span>
+            </h1>
+
+            <p>
+                Daqueles que param o tempo. Que arrepiam logo na primeira nota e continuam ecoando na mente o dia inteiro, sem pedir licença. Você não é apenas o ritmo constante ou a base que sustenta a música; você é a linha melódica principal, a obra de arte desenhada com precisão absoluta no meio do caos.
+            </p>
+            <p>
+                A tua presença tem a força de um estádio lotado em silêncio, esperando pelo refrão mais bonito. És a harmonia perfeita que transforma qualquer dia comum num clássico inesquecível.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-tracks">
+        <div class="container">
+            <h2>Nossa Tracklist</h2>
+            <p style="margin-bottom: 40px;">Os capítulos mais marcantes do nosso álbum exclusivo.</p>
+            
+            <div class="tracklist">
+                <div class="track-item">
+                    <span class="track-number">Faixa 01</span>
+                    <h3 class="track-title">A Introdução (O Primeiro Encontro)</h3>
+                    <p>O momento exato em que a melodia começou. Bastaram poucas notas para eu perceber que aquela harmonia iria mudar completamente o ritmo da minha vida.</p>
+                </div>
+                
+                <div class="track-item">
+                    <span class="track-number">Faixa 02</span>
+                    <h3 class="track-title">O Refrão (A Nossa Sintonia)</h3>
+                    <p>A fase em que tudo encaixou. Os sorrisos divididos, as conversas que duram horas e a certeza de que a música fica muito melhor quando tocada a dois.</p>
+                </div>
+                
+                <div class="track-item">
+                    <span class="track-number">Faixa 03</span>
+                    <h3 class="track-title">O Acorde Perfeito (O Presente)</h3>
+                    <p>Onde estamos hoje. Cada detalhe teu compõe a melhor parte do meu dia. És a nota mais alta, vibrante e bonita de toda a composição.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-footer">
+        <div class="container">
+            <svg class="rose-icon" viewBox="0 0 100 100">
+                <path d="M50,50 C40,40 45,25 55,25 C65,25 65,40 50,50 Z" />
+                <path d="M50,50 C60,40 55,25 45,25 C35,25 35,40 50,50 Z" />
+                <path d="M50,50 C45,60 35,55 35,45 C35,35 50,40 50,50 Z" />
+                <path d="M50,50 C55,60 65,55 65,45 C65,35 50,40 50,50 Z" />
+                <path d="M50,85 L50,85" stroke="#335533" stroke-width="2" />
+                <path d="M50,65 C40,65 35,60 35,60 C35,60 42,70 50,68" stroke="#335533" />
+            </svg>
+
+            <div class="footer-note">
+                "Obrigado por seres a melhor trilha sonora da minha vida."
+            </div>
+            
+            <p style="font-size: 8pt; color: #333333; margin-top: 60px; font-family: 'Segoe UI', sans-serif; letter-spacing: 1px;">
+                Feito com ❤️ especialmente para ti.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        const enterBtn = document.getElementById('enterBtn');
+        const bgMusic = document.getElementById('bgMusic');
+
+        enterBtn.addEventListener('click', (e) => {
+            // Evita o comportamento padrão imediato para podermos iniciar o áudio primeiro
+            e.preventDefault();
+            
+            // Inicia o áudio em background (gatilho por interação obrigatório pelo browser)
+            bgMusic.play().catch(error => {
+                console.log("O autoplay foi bloqueado pelo navegador. É necessária a interação do usuário.", error);
+            });
+
+            // Faz o scroll suave até a seção principal do Solo
+            document.querySelector('#solo').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
