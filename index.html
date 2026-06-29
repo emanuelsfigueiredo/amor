@@ -3,510 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Dia dos Namorados, Meu Amor</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <title>Para Você</title>
     <style>
-        /* --- VARIÁVEIS DE COR E RESET --- */
         :root {
-            --bg-color: #fcf8f7;
-            --primary: #8a3041;
-            --primary-light: #b86b77;
-            --accent: #d4af37;
-            --text: #2c2525;
-            --shadow: rgba(138, 48, 65, 0.1);
+            --bg-color: #FAFAFA;
+            --text-main: #1A1A1A;
+            --text-muted: #8C8C8C;
+            --accent: #E57373;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, .serif {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        /* --- ANIMAÇÕES DE REVELAÇÃO --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- PLAYER DE MÚSICA FLUTUANTE --- */
-        .music-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(138, 48, 65, 0.2);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .music-player:hover {
-            transform: scale(1.05);
-        }
-
-        .music-icon {
-            width: 24px;
-            height: 24px;
-            fill: var(--primary);
-        }
-
-        .music-text {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* --- HERO SECTION (INTRODUÇÃO) --- */
-        header {
-            min-height: 100vh; /* Fallback */
-            min-height: 100dvh;
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(rgba(252, 248, 247, 0.4), rgba(252, 248, 247, 0.9)), 
-                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200') no-repeat center center/cover;
+            overflow-x: hidden;
             padding: 20px;
+            cursor: default;
         }
 
-        header h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 400;
-            animation: fadeIn 2s ease;
-        }
-
-        header p {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--primary-light);
-            animation: fadeIn 2.5s ease;
-        }
-
-        /* --- CONTADOR DE TEMPO --- */
-        .counter-section {
-            padding: clamp(40px, 8vw, 80px) 20px;
-            text-align: center;
-            background: white;
-        }
-
-        .counter-section h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 40px;
-        }
-
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .time-box {
-            background: var(--bg-color);
-            padding: 20px;
-            border-radius: 8px;
-            min-width: clamp(80px, 15vw, 120px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            border-bottom: 3px solid var(--accent);
-        }
-
-        .time-box span {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: var(--primary);
-        }
-
-        .time-box label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #777;
-        }
-
-        /* --- GALERIA POLAROID --- */
-        .gallery-section {
-            padding: clamp(50px, 10vw, 100px) 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .gallery-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 60px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: clamp(20px, 5vw, 40px);
-            justify-items: center;
-        }
-
-        .polaroid {
-            background: white;
-            padding: 15px 15px 30px 15px;
-            box-shadow: 0 10px 25px var(--shadow);
-            transform: rotate(var(--r));
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            max-width: 300px;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .polaroid:hover {
-            transform: rotate(0deg) scale(1.05);
-            box-shadow: 0 15px 35px rgba(138, 48, 65, 0.2);
-            z-index: 10;
-        }
-
-        .polaroid img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            filter: sepia(10%);
-        }
-
-        .polaroid .caption {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.3rem;
-            color: #4a4a4a;
-        }
-
-        /* --- LINHA DO TEMPO (TIMELINE) --- */
-        .timeline-section {
-            background: white;
-            padding: clamp(50px, 10vw, 100px) 20px;
-        }
-
-        .timeline-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: clamp(30px, 6vw, 60px);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 1px;
-            background-color: var(--primary-light);
+        /* Linha de progresso sutil no topo */
+        .progress-bar {
+            position: fixed;
             top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -0.5px;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.2s ease;
         }
 
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-        }
-
-        .timeline-item::after {
-            content: '♥';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            color: var(--accent);
-            border: 1px solid var(--primary-light);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
+        main {
+            max-width: 600px;
+            width: 100%;
             text-align: center;
-            font-size: 12px;
-            line-height: 18px;
         }
 
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; }
-
-        .right::after { left: -10px; }
-
-        .timeline-content {
-            padding: 20px;
-            background: var(--bg-color);
-            position: relative;
-            border-radius: 6px;
-        }
-
-        .timeline-content h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .timeline-content .date {
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        /* --- CARTA DE AMOR (FOOTER/FINAL) --- */
-        .love-letter {
-            padding: clamp(50px, 10vw, 100px) 20px;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .love-letter p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.2rem, 4vw, 1.6rem);
-            font-style: italic;
-            color: var(--text);
-            margin-bottom: 30px;
-            line-height: 1.8;
-            overflow-wrap: break-word;
-        }
-
-        .signature {
-            font-size: 1.1rem;
+        .title {
+            font-weight: 300;
+            font-size: 1.8rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--primary);
-            font-weight: 500;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
         }
 
-        /* --- RESPONSIVIDADE --- */
-        @media screen and (max-width: 768px) {
-            header p.serif { font-size: clamp(1rem, 4vw, 1.2rem) !important; }
-            
-            .timeline::after { left: 31px; }
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
-            .timeline-item::after { left: 21px; }
-            .left, .right { left: 0; }
-
-            .countdown-container { gap: 15px; }
-            .time-box { padding: 15px 10px; }
-            .time-box span { font-size: 1.8rem; }
+        .secret-trigger {
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        @media screen and (max-width: 480px) {
-            section { padding-left: 15px; padding-right: 15px; }
-            
-            .countdown-container { gap: 10px; }
-            .time-box { flex: 1 1 120px; }
-            .time-box span { font-size: 1.5rem; }
-            
-            .polaroid { max-width: 100%; }
-            
-            .music-player {
-                bottom: 10px;
-                right: 10px;
-                padding: 6px 12px;
-            }
-            .music-text { font-size: 9px; }
+        .secret-trigger:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
         }
 
+        /* Contador sutil */
+        .counter-section {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1.5s;
+        }
+
+        .counter-numbers {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Detalhes Escondidos / Interativos */
+        .hidden-note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            height: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* O Coração Flutuante do Clique */
+        .floating-heart {
+            position: absolute;
+            font-size: 12px;
+            color: var(--accent);
+            pointer-events: none;
+            animation: floatUp 1.5s ease-out forwards;
+        }
+
+        /* Rodapé minimalista */
+        footer {
+            position: fixed;
+            bottom: 20px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .hint {
+            cursor: help;
+            transition: opacity 0.3s;
+        }
+
+        .hint:hover::after {
+            content: " (clique em qualquer lugar ou passe o mouse nos detalhes)";
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Animações */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
 
-    <audio id="bg-music" loop>
-        <source src="music/Metallica.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
-    </audio>
+    <div class="progress-bar" id="progressBar"></div>
 
-    <div class="music-player" onclick="toggleMusic()">
-        <svg class="music-icon" viewBox="0 0 24 24">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-        <span class="music-text" id="music-status">Tocar Música</span>
-    </div>
+    <main>
+        <h1 class="title">
+            Às vezes, o silêncio diz mais do que <span class="secret-trigger" id="trigger1">mil palavras</span>.
+        </h1>
 
-    <header>
-        <p>Para o meu grande amor</p>
-        <h1>Feliz Dia dos Namorados</h1>
-        <p class="serif" style="text-transform: none; font-size: 1.4rem; font-style: italic; margin-top: 15px;">
-            "De tudo o que vivi, você é a melhor parte."
-        </p>
-    </header>
+        <div class="hidden-note" id="hiddenNote"></div>
 
-    <section class="counter-section reveal">
-        <h2>O tempo voa ao seu lado...</h2>
-        <div class="countdown-container">
-            <div class="time-box">
-                <span id="days">00</span>
-                <label>Dias</label>
-            </div>
-            <div class="time-box">
-                <span id="hours">00</span>
-                <label>Horas</label>
-            </div>
-            <div class="time-box">
-                <span id="minutes">00</span>
-                <label>Minutos</label>
-            </div>
-            <div class="time-box">
-                <span id="seconds">00</span>
-                <label>Segundos</label>
-            </div>
+        <div class="counter-section">
+            Já se passaram <span class="counter-numbers" id="daysCounter">...</span> dias coletando pequenos motivos para te amar.
         </div>
-    </section>
+    </main>
 
-    <section class="gallery-section reveal">
-        <h2>Nossos Melhores Sorrisos</h2>
-        <div class="gallery-grid">
-            <div class="polaroid" style="--r: -3deg;">
-                <img src="imgs/um-mes1.jpg" alt="Nosso começo">
-                <div class="caption">Onde tudo começou...</div>
-            </div>
-            <div class="polaroid" style="--r: 2deg;">
-                <img src="imgs/aquele-dia-inesquecivel.jpg" alt="Nossas viagens">
-                <div class="caption">Aquele dia inesquecível.</div>
-            </div>
-            <div class="polaroid" style="--r: -1deg;">
-                <img src="imgs/meu-lugar-favorito.jpg" alt="Mais um ano juntos">
-                <div class="caption">Meu lugar favorito no mundo.</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="timeline-section reveal">
-        <h2>Nossa História</h2>
-        <div class="timeline">
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <span class="date">15 de Fevereiro</span>
-                    <h3>O Primeiro Olhar</h3>
-                    <p>O dia em que nossos caminhos se cruzaram e o universo conspirou a nosso favor.</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <span class="date">12 de Abril</span>
-                    <h3>O "Sim"</h3>
-                    <p>Quando decidimos oficializar o que o coração já sabia há muito tempo.</p>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <span class="date">Hoje</span>
-                    <h3>E o futuro nos espera...</h3>
-                    <p>Cada detalhe ao seu lado constrói o capítulo mais bonito da minha vida.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="love-letter reveal">
-        <p>
-            Obrigado por ser meu porto seguro, minha gargalhada mais sincera e o amor da minha vida. Que o nosso "nós" continue sendo a história mais linda que o mundo já viu. Te amo daqui até a eternidade.
-        </p>
-        <div class="signature">Com todo o meu amor, para sempre seu.</div>
-        <div class="signature"></div> Te Amo Minha Jujubinha.</div>
-        <div class="signature"></div> ❤️❤️❤️</div>
-    </section>
+    <footer>
+        <span class="hint" id="footerHint">feito com amor.</span>
+    </footer>
 
     <script>
-        /* --- CONTADOR DE TEMPO --- */
-        // Configure aqui a data em que vocês se conheceram ou começaram a namorar (Formato: Ano, Mês-1, Dia)
-        // Atenção: No JavaScript, os meses começam do 0 (Janeiro = 0, Fevereiro = 1, etc.)
-        const dataInicio = new Date(2026, 3, 12, 10, 0, 0); //  12 de Abril de 2026 às 10h
+        // 1. ATUALIZE A DATA DO SEU NAMORO AQUI (Ano, Mês [0-11], Dia)
+        // Exemplo: 12 de Outubro de 2025 -> new Date(2025, 9, 12)
+        const dataInicio = new Date(2026, 3, 12); 
 
+        // Contador de dias dinâmico
         function atualizarContador() {
-            const agora = new Date();
-            const diferenca = agora - dataInicio;
-
-            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerText = dias.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = horas.toString().padStart(2, '0');
-            document.getElementById('minutes').innerText = minutos.toString().padStart(2, '0');
-            document.getElementById('seconds').innerText = segundos.toString().padStart(2, '0');
+            const hoje = new Date();
+            const diferencaTempo = hoje - dataInicio;
+            const diferencaDias = Math.floor(diferencaTempo / (1000 * 60 * 60 * 24));
+            document.getElementById('daysCounter').innerText = diferencaDias;
         }
-        setInterval(atualizarContador, 1000);
         atualizarContador();
 
-        /* --- CONTROLE DO AUDIO PLAYER --- */
-        const musica = document.getElementById('bg-music');
-        const statusMusica = document.getElementById('music-status');
+        // 2. Detalhes para explorar (Mensagens secretas)
+        const trigger1 = document.getElementById('trigger1');
+        const hiddenNote = document.getElementById('hiddenNote');
+        
+        const mensagens = [
+            "Como o seu riso do nada.",
+            "O jeito que você segura minha mão.",
+            "A calmaria que você me traz.",
+            "Apenas mais um detalhe: eu te amo."
+        ];
+        let msgIndex = 0;
 
-        function toggleMusic() {
-            if (musica.paused) {
-                musica.play().catch(e => console.log("O navegador bloqueou o autoplay inicial. Clique novamente."));
-                statusMusica.innerText = "Pausar Música";
-            } else {
-                musica.pause();
-                statusMusica.innerText = "Tocar Música";
-            }
-        }
+        trigger1.addEventListener('click', (e) => {
+            e.stopPropagation(); // Não ativa os corações ao clicar aqui
+            hiddenNote.style.opacity = 0;
+            setTimeout(() => {
+                hiddenNote.innerText = mensagens[msgIndex];
+                hiddenNote.style.opacity = 1;
+                msgIndex = (msgIndex + 1) % mensagens.length;
+            }, 300);
+        });
 
-        /* --- EFEITO REVEAL (SURGIR AO ROLAR PÁGINA) --- */
-        function revealElements() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100;
+        // 3. Efeito Interativo: Cliques geram corações minimalistas na tela
+        window.addEventListener('click', (e) => {
+            const heart = document.createElement('span');
+            heart.classList.add('floating-heart');
+            heart.innerText = '✦'; // Um brilho/estrela sutil em vez de um coração gigante
+            if (Math.random() > 0.5) heart.innerText = '♥';
+            
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 1500);
+        });
 
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
-            });
-        }
-        window.addEventListener('scroll', revealElements);
-        // Disparar uma vez no início caso haja elementos visíveis
-        revealElements();
+        // 4. Barra de progresso baseada no scroll (se ela tentar rolar a página vazia)
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement;
+            const b = document.body;
+            const st = 'scrollTop';
+            const sh = 'scrollHeight';
+            const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+            document.getElementById('progressBar').style.width = percent + '%';
+        });
+
+        // Easter egg no console para se ela for curiosa e inspecionar o código
+        console.log("%cOi amor! Sabia que você é o meu código favorito?", "color: #E57373; font-size: 16px; font-weight: bold;");
     </script>
 </body>
 </html>
