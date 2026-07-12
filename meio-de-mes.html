@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Você</title>
+    <style>
+        :root {
+            --bg-color: #FAFAFA;
+            --text-main: #1A1A1A;
+            --text-muted: #8C8C8C;
+            --accent: #E57373;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+            cursor: default;
+        }
+
+        /* Linha de progresso sutil no topo */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+
+        main {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .title {
+            font-weight: 300;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
+        }
+
+        .secret-trigger {
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .secret-trigger:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Contador sutil */
+        .counter-section {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1.5s;
+        }
+
+        .counter-numbers {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Detalhes Escondidos / Interativos */
+        .hidden-note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            height: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* O Coração Flutuante do Clique */
+        .floating-heart {
+            position: absolute;
+            font-size: 12px;
+            color: var(--accent);
+            pointer-events: none;
+            animation: floatUp 1.5s ease-out forwards;
+        }
+
+        /* Rodapé minimalista */
+        footer {
+            position: fixed;
+            bottom: 20px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .hint {
+            cursor: help;
+            transition: opacity 0.3s;
+        }
+
+        .hint:hover::after {
+            content: " (clique em qualquer lugar ou passe o mouse nos detalhes)";
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <main>
+        <h1 class="title">
+            Às vezes, o silêncio diz mais do que <span class="secret-trigger" id="trigger1">mil palavras</span>.
+        </h1>
+
+        <div class="hidden-note" id="hiddenNote"></div>
+
+        <div class="counter-section">
+            Já se passaram <span class="counter-numbers" id="daysCounter">...</span> dias coletando pequenos motivos para te amar.
+        </div>
+    </main>
+
+    <footer>
+        <span class="hint" id="footerHint">feito com amor.</span>
+    </footer>
+
+    <script>
+        // 1. ATUALIZE A DATA DO SEU NAMORO AQUI (Ano, Mês [0-11], Dia)
+        // Exemplo: 12 de Outubro de 2025 -> new Date(2025, 9, 12)
+        const dataInicio = new Date(2026, 3, 12); 
+
+        // Contador de dias dinâmico
+        function atualizarContador() {
+            const hoje = new Date();
+            const diferencaTempo = hoje - dataInicio;
+            const diferencaDias = Math.floor(diferencaTempo / (1000 * 60 * 60 * 24));
+            document.getElementById('daysCounter').innerText = diferencaDias;
+        }
+        atualizarContador();
+
+        // 2. Detalhes para explorar (Mensagens secretas)
+        const trigger1 = document.getElementById('trigger1');
+        const hiddenNote = document.getElementById('hiddenNote');
+        
+        const mensagens = [
+            "Como o seu riso do nada.",
+            "O jeito que você segura minha mão.",
+            "A calmaria que você me traz.",
+            "Apenas mais um detalhe: eu te amo."
+        ];
+        let msgIndex = 0;
+
+        trigger1.addEventListener('click', (e) => {
+            e.stopPropagation(); // Não ativa os corações ao clicar aqui
+            hiddenNote.style.opacity = 0;
+            setTimeout(() => {
+                hiddenNote.innerText = mensagens[msgIndex];
+                hiddenNote.style.opacity = 1;
+                msgIndex = (msgIndex + 1) % mensagens.length;
+            }, 300);
+        });
+
+        // 3. Efeito Interativo: Cliques geram corações minimalistas na tela
+        window.addEventListener('click', (e) => {
+            const heart = document.createElement('span');
+            heart.classList.add('floating-heart');
+            heart.innerText = '✦'; // Um brilho/estrela sutil em vez de um coração gigante
+            if (Math.random() > 0.5) heart.innerText = '♥';
+            
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 1500);
+        });
+
+        // 4. Barra de progresso baseada no scroll (se ela tentar rolar a página vazia)
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement;
+            const b = document.body;
+            const st = 'scrollTop';
+            const sh = 'scrollHeight';
+            const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+            document.getElementById('progressBar').style.width = percent + '%';
+        });
+
+        // Easter egg no console para se ela for curiosa e inspecionar o código
+        console.log("%cOi amor! Sabia que você é o meu código favorito?", "color: #E57373; font-size: 16px; font-weight: bold;");
+    </script>
+</body>
+</html>
