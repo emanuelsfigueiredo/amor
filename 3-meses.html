@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Três Meses de Nós</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --text-main: #f5f5f7;
+            --text-accent: #d4af37; /* Toque dourado sofisticado */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+        }
+
+        /* Preloader */
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease;
+        }
+        .loader-content {
+            text-align: center;
+            animation: fadeInOut 2.5s infinite ease-in-out;
+        }
+        .loader-content h2 {
+            font-size: 2rem;
+            letter-spacing: 4px;
+            color: var(--text-accent);
+        }
+
+        /* Header / Hero */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s forwards 1s;
+        }
+
+        header p {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-accent);
+            opacity: 0;
+            animation: fadeIn 2s forwards 2s;
+        }
+
+        /* Contador */
+        .counter-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, rgba(20,20,20,0.5));
+        }
+
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .counter-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 12px;
+            min-width: 140px;
+            backdrop-filter: blur(10px);
+        }
+
+        .counter-box span {
+            display: block;
+            font-size: 3rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-accent);
+        }
+
+        .counter-box label {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        /* Manifesto de Amor */
+        .letter-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .letter-section h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--text-accent);
+        }
+
+        .letter-p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 200;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        /* Galeria Estilo Mosaico */
+        .gallery-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+        }
+
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-auto-rows: 350px;
+            gap: 20px;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .grid-item-wide {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .grid-item-wide { grid-column: span 1; }
+            header h1 { font-size: 2.5rem; }
+        }
+
+        /* Linha do Tempo */
+        .timeline-section {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+        }
+
+        .timeline {
+            position: relative;
+            border-left: 1px solid var(--glass-border);
+            padding-left: 30px;
+            margin-left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--text-accent);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--text-accent);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-desc {
+            font-weight: 200;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tela de Carregamento Fina -->
+    <div id="loader">
+        <div class="loader-content">
+            <h2>90 dias de nós...</h2>
+        </div>
+    </div>
+
+    <!-- Seção Principal -->
+    <header>
+        <p>12 de Julho de 2026</p>
+        <h1>Três meses construindo<br><span style="color: var(--text-accent); font-style: italic;">o nosso próprio universo</span></h1>
+    </header>
+
+    <!-- Contador de Tempo -->
+    <section class="counter-section">
+        <h2 style="font-size: 2rem;">Contando cada segundo ao seu lado</h2>
+        <div class="counter-container">
+            <div class="counter-box"><span id="dias">00</span><label>Dias</label></div>
+            <div class="counter-box"><span id="horas">00</span><label>Horas</label></div>
+            <div class="counter-box"><span id="minutos">00</span><label>Minutos</label></div>
+            <div class="counter-box"><span id="segundos">00</span><label>Segundos</label></div>
+        </div>
+    </section>
+
+    <!-- Carta / Manifesto -->
+    <section class="letter-section">
+        <h2>Para Quem Transforma Meus Dias</h2>
+        <p class="letter-p">
+            Dizem que o tempo é relativo, e estes três meses provaram isso da forma mais linda possível. Parecem décadas pela profundidade do que sentimos e pela cumplicidade que criamos, mas ao mesmo tempo parece que foi ontem que o seu olhar mudou a direção da minha vida.
+        </p>
+        <p class="letter-p">
+            Cada detalhe cotidiano ganhou um novo significado com você. Celebrar 90 dias não é sobre o tempo em si, mas sobre a certeza de que a cada amanhecer eu escolho — e escolherei — amar você, com toda a sofisticação e leveza que só a nossa conexão possui. Feliz três meses.
+        </p>
+    </section>
+
+    <!-- Galeria Mosaico -->
+    <section class="gallery-section">
+        <h2>Fragmentos de Nós</h2>
+        <div class="grid-gallery">
+            <div class="grid-item grid-item-wide"><img src="imgs/momento1.jpeg" alt="Momento nosso"></div>
+            <div class="grid-item"><img src="imgs/momento2.jpeg" alt="Momento nosso"></div>
+            <div class="grid-item"><img src="imgs/momento3.jpeg" alt="Momento nosso"></div>
+            <div class="grid-item grid-item-wide"><img src="imgs/momento4.jpeg" alt="Momento nosso"></div>
+        </div>
+    </section>
+
+    <!-- Linha do Tempo -->
+    <section class="timeline-section">
+        <h2>Nossa Breve e Linda História</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Mês 1</div>
+                <div class="timeline-title">O Início de Tudo</div>
+                <div class="timeline-desc">Os primeiros frios na barriga, a descoberta dos gostos em comum e a certeza implícita de que algo muito grande estava começando a se desenhar aqui.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Mês 2</div>
+                <div class="timeline-title">Criando Raízes</div>
+                <div class="timeline-desc">Onde o carinho virou rotina boa, as piadas internas ganharam vida e os planos para o futuro começaram a fazer sentido de verdade.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Mês 3</div>
+                <div class="timeline-title">A Construção do Amor</div>
+                <div class="timeline-desc">Chegamos aqui com a certeza de que a beleza do nosso amor está nos pequenos detalhes, no respeito mútuo e na vontade inabalável de crescer lado a lado.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Amando você de coração, traçando plano para um vida ao seu lado. — Três meses de puro amor.
+    </footer>
+
+    <script>
+        // Remover Tela de Carregamento
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 1000);
+            }, 1500);
+        });
+
+        // Configuração do Contador Relógio (Altere para a data exata do início do namoro)
+        const dataInicio = new Date("2026-04-12T00:00:00"); 
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - dataInicio;
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById('dias').innerText = dias.toString().padStart(2, '0');
+            document.getElementById('horas').innerText = horas.toString().padStart(2, '0');
+            document.getElementById('minutos').innerText = minutos.toString().padStart(2, '0');
+            document.getElementById('segundos').innerText = segundos.toString().padStart(2, '0');
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+</body>
+</html>
