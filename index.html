@@ -1,356 +1,785 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4 Meses Inesquecíveis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #0d0d11;
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --accent: #ff4b72;
-      --accent-glow: rgba(255, 75, 114, 0.4);
-      --text-main: #f0f0f5;
-      --text-muted: #a0a0b0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Meses do Nosso Amor | Uma Celebração Eterna</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldDeep: '#06100c',
+                        emeraldDark: '#0b1a13',
+                        emeraldMedium: '#132a20',
+                        goldPrimary: '#dfb76c',
+                        goldLight: '#f5e2b3',
+                        goldDark: '#b88a38',
+                        champagne: '#f8f4e9',
+                        roseAccent: '#d47a85'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        garamond: ['Cormorant Garamond', 'serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite ease-in-out',
+                        'float': 'float 6s infinite ease-in-out',
+                        'shimmer': 'shimmer 2.5s infinite linear',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { filter: 'drop-shadow(0 0 15px rgba(223, 183, 108, 0.4))' },
+                            '50%': { filter: 'drop-shadow(0 0 30px rgba(223, 183, 108, 0.8))' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome & Canvas-Confetti -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #06100c;
+            color: #f8f4e9;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(19, 42, 32, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(223, 183, 108, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
+        .glass-card:hover {
+            border-color: rgba(223, 183, 108, 0.6);
+            box-shadow: 0 12px 40px 0 rgba(223, 183, 108, 0.15);
+        }
 
-    /* Container de Corações Animados no Fundo */
-    #hearts-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
+        /* Golden Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f5e2b3 0%, #dfb76c 50%, #997029 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .heart {
-      position: absolute;
-      bottom: -20px;
-      color: var(--accent);
-      opacity: 0.6;
-      animation: floatUp linear infinite;
-    }
+        .gold-border-glow {
+            box-shadow: 0 0 20px rgba(223, 183, 108, 0.25);
+        }
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(0.8) rotate(0deg);
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(-105vh) scale(1.2) rotate(360deg);
-        opacity: 0;
-      }
-    }
+        /* Flip Card Styling */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
 
-    /* Layout do Conteúdo */
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      position: relative;
-      z-index: 1;
-    }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
+        .flip-card:hover .transform-style-3d,
+        .flip-card.flipped .transform-style-3d {
+            transform: rotateY(180deg);
+        }
 
-    .badge {
-      display: inline-block;
-      background: rgba(255, 75, 114, 0.15);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-      box-shadow: 0 0 15px var(--accent-glow);
-    }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
 
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 3.5rem;
-      color: #fff;
-      text-shadow: 0 0 20px rgba(255, 75, 114, 0.6);
-      margin-bottom: 10px;
-    }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
 
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
-      font-weight: 300;
-    }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06100c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #132a20;
+            border: 1px solid rgba(223, 183, 108, 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dfb76c;
+        }
 
-    /* Cards com Glassmorphism */
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
+        /* Glowing Particles Canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 75, 114, 0.4);
-    }
+        /* Audio Visualizer Bar Animations */
+        .bar {
+            width: 4px;
+            background: #dfb76c;
+            border-radius: 2px;
+            animation: barPulse 1.2s infinite ease-in-out alternate;
+        }
+        .bar:nth-child(1) { animation-delay: 0.1s; height: 12px; }
+        .bar:nth-child(2) { animation-delay: 0.3s; height: 24px; }
+        .bar:nth-child(3) { animation-delay: 0.2s; height: 18px; }
+        .bar:nth-child(4) { animation-delay: 0.4s; height: 28px; }
+        .bar:nth-child(5) { animation-delay: 0.15s; height: 14px; }
 
-    .card-title {
-      font-size: 1.3rem;
-      color: var(--accent);
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        .paused .bar {
+            animation-play-state: paused;
+            height: 6px !important;
+        }
 
-    .message {
-      line-height: 1.8;
-      color: #e0e0ea;
-      font-weight: 300;
-      font-size: 1.05rem;
-      text-align: justify;
-    }
-
-    /* Contador Interativo */
-    .counter-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .counter-box {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .counter-value {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #fff;
-    }
-
-    .counter-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Motivos Expandíveis */
-    .reasons-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .reason-item {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 15px 20px;
-      border-radius: 10px;
-      border-left: 3px solid var(--accent);
-      font-size: 0.95rem;
-      transition: background 0.3s ease;
-    }
-
-    .reason-item:hover {
-      background: rgba(255, 75, 114, 0.1);
-    }
-
-    /* Botão Surpresa Interativo */
-    .interactive-zone {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .btn-surprise {
-      background: linear-gradient(135deg, #ff4b72, #ff7597);
-      border: none;
-      color: #fff;
-      padding: 16px 36px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 10px 25px var(--accent-glow);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-surprise:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 35px rgba(255, 75, 114, 0.6);
-    }
-
-    .btn-surprise:active {
-      transform: scale(0.98);
-    }
-
-    .hidden-message {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.8s cubic-bezier(0, 1, 0, 1);
-      opacity: 0;
-    }
-
-    .hidden-message.show {
-      max-height: 500px;
-      opacity: 1;
-      transition: max-height 0.8s cubic-bezier(1, 0, 1, 0), opacity 1s ease-in;
-      margin-top: 25px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 0 20px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2.8rem; }
-      .card { padding: 20px; }
-    }
-  </style>
+        @keyframes barPulse {
+            0% { height: 6px; }
+            100% { height: 28px; }
+        }
+    </style>
 </head>
-<body>
+<body class="relative selection:bg-goldPrimary selection:text-emeraldDeep">
 
-  <div id="hearts-container"></div>
+    <!-- Background Canvas for Floating Gold Dust & Hearts -->
+    <canvas id="particles-canvas"></canvas>
 
-  <div class="container">
-    <header>
-      <span class="badge">Nossa História</span>
-      <h1>4 Meses ao Seu Lado</h1>
-      <p class="subtitle">120 dias descobrindo que o amor pode ser leve, intenso e eterno.</p>
-    </header>
-
-    <!-- Cartão Principal de Declaração -->
-    <div class="card">
-      <div class="card-title">✨ Para o Amor da Minha Vida</div>
-      <p class="message">
-        Parece que foi ontem que começamos a escrever nossa história, mas ao mesmo tempo sinto como se te conhecesse de outras vidas. Nestes 4 meses, você transformou os meus dias simples em momentos inesquecíveis. O seu sorriso se tornou o meu lugar favorito no mundo e a sua voz, a minha calmaria. Obrigado por ser minha companheira, minha confidente e o meu porto seguro.
-      </p>
+    <!-- Floating Atmosphere Music Player Box -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div class="glass-card p-3 md:p-4 rounded-full flex items-center gap-4 shadow-2xl border border-goldPrimary/40 transition-all duration-300 hover:scale-105">
+            <button id="music-toggle-btn" class="w-12 h-12 rounded-full bg-gradient-to-r from-goldDark to-goldPrimary text-emeraldDeep flex items-center justify-center font-bold shadow-lg transition-transform hover:scale-110 active:scale-95 focus:outline-none">
+                <i id="music-icon" class="fa-solid fa-play text-lg translate-x-0.5"></i>
+            </button>
+            <div class="hidden sm:block pr-3">
+                <p class="text-xs font-cinzel tracking-widest text-goldLight uppercase">Trilha Sonora do Amor</p>
+                <p class="text-sm font-semibold text-champagne truncate max-w-[140px]">Melodia Inesquecível</p>
+            </div>
+            <div id="audio-visualizer" class="flex items-center gap-1 h-8 pr-2 paused">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
     </div>
 
-    <!-- Contador de Tempo -->
-    <div class="card">
-      <div class="card-title">⏳ Tempo Colecionando Sorrisos</div>
-      <div class="counter-grid">
-        <div class="counter-box">
-          <div class="counter-value" id="months">4</div>
-          <div class="counter-label">Meses</div>
+    <!-- Hidden Audio Element with Web Audio Synth alternative or royalty-free romantic stream -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="music/November rain.mp3">
+    </audio>
+
+    <!-- Main Container -->
+    <div class="relative z-10">
+
+        <!-- 1. HERO SECTION -->
+        <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative pt-12 pb-20 overflow-hidden">
+            <!-- Decorative Subtle Ambient Glows -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-goldPrimary/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-roseAccent/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <!-- Glowing Wax Seal / Interactive Emblem -->
+            <div class="mb-8 animate-float">
+                <div class="relative group cursor-pointer" onclick="triggerSealEffect(event)">
+                    <div class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-goldLight via-goldPrimary to-goldDark p-1 shadow-[0_0_30px_rgba(223,183,108,0.4)] animate-pulse-glow">
+                        <div class="w-full h-full rounded-full bg-emeraldDark flex items-center justify-center border border-goldPrimary/50">
+                            <i class="fa-solid fa-heart text-3xl md:text-4xl text-goldPrimary transition-transform duration-500 group-hover:scale-125"></i>
+                        </div>
+                    </div>
+                    <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-goldDark text-emeraldDeep text-[10px] uppercase font-cinzel font-bold px-3 py-0.5 rounded-full whitespace-nowrap shadow-md">Clique aqui</span>
+                </div>
+            </div>
+
+            <!-- Main Heading -->
+            <p class="font-cinzel text-xs md:text-sm uppercase tracking-[0.4em] text-goldLight mb-3 opacity-90">
+                Meio Ano de Encanto e Paixão
+            </p>
+            <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-champagne mb-6 max-w-4xl leading-tight">
+                6 Meses do <span class="gold-gradient-text italic font-serif">Nosso Amor</span>
+            </h1>
+            <p class="font-garamond text-lg sm:text-2xl italic text-champagne/80 max-w-2xl font-light mb-12">
+                "Cento e oitenta e dois dias onde o universo inteiro se reduziu ao brilho do teu olhar e ao conforto do teu abraço."
+            </p>
+
+            <!-- Counter Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-3xl mb-12 px-2">
+                <div class="glass-card p-4 md:p-6 rounded-2xl text-center border-goldPrimary/30">
+                    <span id="days-counter" class="font-cinzel text-3xl md:text-5xl font-bold gold-gradient-text block">182</span>
+                    <span class="text-xs uppercase tracking-widest text-champagne/70 font-montserrat mt-1 block">Dias Juntos</span>
+                </div>
+                <div class="glass-card p-4 md:p-6 rounded-2xl text-center border-goldPrimary/30">
+                    <span id="hours-counter" class="font-cinzel text-3xl md:text-5xl font-bold gold-gradient-text block">4.368</span>
+                    <span class="text-xs uppercase tracking-widest text-champagne/70 font-montserrat mt-1 block">Horas</span>
+                </div>
+                <div class="glass-card p-4 md:p-6 rounded-2xl text-center border-goldPrimary/30">
+                    <span id="minutes-counter" class="font-cinzel text-3xl md:text-5xl font-bold gold-gradient-text block">262.080</span>
+                    <span class="text-xs uppercase tracking-widest text-champagne/70 font-montserrat mt-1 block">Minutos</span>
+                </div>
+                <div class="glass-card p-4 md:p-6 rounded-2xl text-center border-goldPrimary/30">
+                    <span id="seconds-counter" class="font-cinzel text-3xl md:text-5xl font-bold gold-gradient-text block">15.724.800</span>
+                    <span class="text-xs uppercase tracking-widest text-champagne/70 font-montserrat mt-1 block">Segundos</span>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator Arrow -->
+            <a href="#timeline" class="inline-flex flex-col items-center text-goldPrimary hover:text-goldLight transition-colors duration-300">
+                <span class="text-xs font-cinzel tracking-widest uppercase mb-2">Explorar Nossa História</span>
+                <i class="fa-solid fa-chevron-down animate-bounce"></i>
+            </a>
+        </section>
+
+
+        <!-- 2. TIMELINE SECTION (Nossa Trajetória) -->
+        <section id="timeline" class="py-24 px-4 max-w-6xl mx-auto relative">
+            <div class="text-center mb-16">
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold gold-gradient-text mb-4">Nossa Trajetória</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-goldPrimary to-transparent mx-auto"></div>
+                <p class="font-garamond text-xl text-champagne/80 italic mt-3">Cada passo ao seu lado é o meu capítulo favorito.</p>
+            </div>
+
+            <div class="relative wrap overflow-hidden p-2 md:p-10">
+                <!-- Vertical Line -->
+                <div class="absolute border-opacity-20 border-goldPrimary h-full border-2 left-1/2 -translate-x-1/2 rounded-full hidden md:block"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="mb-12 flex justify-between items-center w-full right-timeline flex-col md:flex-row">
+                    <div class="order-1 md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-goldPrimary shadow-xl w-10 h-10 rounded-full border-2 border-emeraldDeep justify-center my-4 md:my-0">
+                        <i class="fa-solid fa-sparkles text-emeraldDeep text-sm"></i>
+                    </div>
+                    <div class="order-1 glass-card rounded-2xl p-6 md:p-8 w-full md:w-5/12 border-goldPrimary/30 transform transition-all duration-500 hover:-translate-y-2">
+                        <span class="text-xs font-cinzel font-semibold tracking-widest text-goldPrimary uppercase">Mês 1</span>
+                        <h3 class="font-cinzel text-2xl font-bold text-champagne mb-2">O Início de Tudo</h3>
+                        <p class="font-garamond text-lg text-champagne/80 leading-relaxed italic">
+                            "Aquele primeiro olhar no qual o mundo ao redor pareceu desacelerar. Bastou uma conversa para eu perceber que minha vida jamais seria a mesma."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="mb-12 flex justify-between items-center w-full left-timeline flex-col md:flex-row-reverse">
+                    <div class="order-1 md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-goldPrimary shadow-xl w-10 h-10 rounded-full border-2 border-emeraldDeep justify-center my-4 md:my-0">
+                        <i class="fa-solid fa-heart text-emeraldDeep text-sm"></i>
+                    </div>
+                    <div class="order-1 glass-card rounded-2xl p-6 md:p-8 w-full md:w-5/12 border-goldPrimary/30 transform transition-all duration-500 hover:-translate-y-2">
+                        <span class="text-xs font-cinzel font-semibold tracking-widest text-goldPrimary uppercase">Mês 2 & 3</span>
+                        <h3 class="font-cinzel text-2xl font-bold text-champagne mb-2">Construindo Memórias</h3>
+                        <p class="font-garamond text-lg text-champagne/80 leading-relaxed italic">
+                            "Risadas compartilhadas até tarde, piadas internas que só nós entendemos e a certeza reconfortante de ter encontrado o meu lugar no mundo."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="mb-12 flex justify-between items-center w-full right-timeline flex-col md:flex-row">
+                    <div class="order-1 md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-goldPrimary shadow-xl w-10 h-10 rounded-full border-2 border-emeraldDeep justify-center my-4 md:my-0">
+                        <i class="fa-solid fa-gem text-emeraldDeep text-sm"></i>
+                    </div>
+                    <div class="order-1 glass-card rounded-2xl p-6 md:p-8 w-full md:w-5/12 border-goldPrimary/30 transform transition-all duration-500 hover:-translate-y-2">
+                        <span class="text-xs font-cinzel font-semibold tracking-widest text-goldPrimary uppercase">Mês 4 & 5</span>
+                        <h3 class="font-cinzel text-2xl font-bold text-champagne mb-2">A Cumplicidade</h3>
+                        <p class="font-garamond text-lg text-champagne/80 leading-relaxed italic">
+                            "Aprofundamos nossas raízes. Descobrimos que amar não é apenas nos momentos perfeitos, mas sim segurar a mão um do outro em qualquer estação."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="mb-12 flex justify-between items-center w-full left-timeline flex-col md:flex-row-reverse">
+                    <div class="order-1 md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-goldPrimary shadow-xl w-10 h-10 rounded-full border-2 border-emeraldDeep justify-center my-4 md:my-0">
+                        <i class="fa-solid fa-crown text-emeraldDeep text-sm"></i>
+                    </div>
+                    <div class="order-1 glass-card rounded-2xl p-6 md:p-8 w-full md:w-5/12 border-goldPrimary/30 transform transition-all duration-500 hover:-translate-y-2">
+                        <span class="text-xs font-cinzel font-semibold tracking-widest text-goldPrimary uppercase">Mês 6 - Hoje</span>
+                        <h3 class="font-cinzel text-2xl font-bold text-champagne mb-2">Meio Ano Magnífico</h3>
+                        <p class="font-garamond text-lg text-champagne/80 leading-relaxed italic">
+                            "Chegamos aos 6 meses. Olho para trás com gratidão e para o futuro com a certeza de que isso é apenas o amanhecer da nossa história."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3. PHOTO GALLERY WITH TILT EFFECT -->
+        <section class="py-20 px-4 max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold gold-gradient-text mb-4">Fragmentos de Nós</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-goldPrimary to-transparent mx-auto"></div>
+                <p class="font-garamond text-xl text-champagne/80 italic mt-3">Momentos imortalizados pelo nosso amor.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Polaroid 1 -->
+                <div class="tilt-card glass-card p-4 rounded-2xl transition-transform duration-300 hover:z-20 cursor-pointer">
+                    <div class="aspect-square rounded-xl overflow-hidden mb-4 relative group">
+                        <img src="imgs/momento2.jpeg" alt="Momento Romântico 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-emeraldDeep/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-heart text-goldPrimary text-3xl animate-pulse"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-garamond text-xl font-semibold text-champagne">Nossos sorrisos favoritos</p>
+                        <p class="font-montserrat text-xs text-goldLight/80 uppercase tracking-widest mt-1">O dia daquela viagem inesquecível</p>
+                    </div>
+                </div>
+
+                <!-- Polaroid 2 -->
+                <div class="tilt-card glass-card p-4 rounded-2xl transition-transform duration-300 hover:z-20 cursor-pointer">
+                    <div class="aspect-square rounded-xl overflow-hidden mb-4 relative group">
+                        <img src="imgs/abraco.jpg" alt="Momento Romântico 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-emeraldDeep/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-heart text-goldPrimary text-3xl animate-pulse"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-garamond text-xl font-semibold text-champagne">O abraço que abriga</p>
+                        <p class="font-montserrat text-xs text-goldLight/80 uppercase tracking-widest mt-1">Pôr do sol especial</p>
+                    </div>
+                </div>
+
+                <!-- Polaroid 3 -->
+                <div class="tilt-card glass-card p-4 rounded-2xl transition-transform duration-300 hover:z-20 cursor-pointer">
+                    <div class="aspect-square rounded-xl overflow-hidden mb-4 relative group">
+                        <img src="imgs/simples.jpg" alt="Momento Romântico 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-emeraldDeep/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-heart text-goldPrimary text-3xl animate-pulse"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-garamond text-xl font-semibold text-champagne">A mágica da simplicidade</p>
+                        <p class="font-montserrat text-xs text-goldLight/80 uppercase tracking-widest mt-1">Um café e mil conversas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 4. MOTIVOS PELOS QUAIS TE AMO (Interactive Flip Cards) -->
+        <section class="py-24 px-4 max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold gold-gradient-text mb-4">Motivos Para Te Amar</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-goldPrimary to-transparent mx-auto"></div>
+                <p class="font-garamond text-xl text-champagne/80 italic mt-3">Clique em cada cartão para revelar um segredo do meu coração.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="flip-card h-64 cursor-pointer perspective-1000" onclick="this.classList.toggle('flipped')">
+                    <div class="relative w-full h-full transform-style-3d">
+                        <!-- Front -->
+                        <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center border-goldPrimary/30 backface-hidden">
+                            <i class="fa-solid fa-sun text-4xl text-goldPrimary mb-4"></i>
+                            <h3 class="font-cinzel text-xl font-bold text-champagne">Seu Sorriso</h3>
+                            <p class="text-xs text-goldLight/70 uppercase tracking-widest mt-2">Clique para revelar</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute inset-0 glass-card rounded-2xl p-6 flex items-center justify-center text-center border-goldPrimary bg-emeraldMedium/90 rotate-y-180 backface-hidden">
+                            <p class="font-garamond text-lg text-champagne italic">
+                                "Ele tem a capacidade mágica de iluminar até o meu dia mais sombrio e trazer paz imediata."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flip-card h-64 cursor-pointer perspective-1000" onclick="this.classList.toggle('flipped')">
+                    <div class="relative w-full h-full transform-style-3d">
+                        <!-- Front -->
+                        <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center border-goldPrimary/30 backface-hidden">
+                            <i class="fa-solid fa-hand-holding-heart text-4xl text-goldPrimary mb-4"></i>
+                            <h3 class="font-cinzel text-xl font-bold text-champagne">Sua Bondade</h3>
+                            <p class="text-xs text-goldLight/70 uppercase tracking-widest mt-2">Clique para revelar</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute inset-0 glass-card rounded-2xl p-6 flex items-center justify-center text-center border-goldPrimary bg-emeraldMedium/90 rotate-y-180 backface-hidden">
+                            <p class="font-garamond text-lg text-champagne italic">
+                                "A forma carinhosa como você cuida do mundo ao seu redor me faz admirar e me apaixonar por você todos os dias."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="flip-card h-64 cursor-pointer perspective-1000" onclick="this.classList.toggle('flipped')">
+                    <div class="relative w-full h-full transform-style-3d">
+                        <!-- Front -->
+                        <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center border-goldPrimary/30 backface-hidden">
+                            <i class="fa-solid fa-laugh-beam text-4xl text-goldPrimary mb-4"></i>
+                            <h3 class="font-cinzel text-xl font-bold text-champagne">Sua Risada</h3>
+                            <p class="text-xs text-goldLight/70 uppercase tracking-widest mt-2">Clique para revelar</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute inset-0 glass-card rounded-2xl p-6 flex items-center justify-center text-center border-goldPrimary bg-emeraldMedium/90 rotate-y-180 backface-hidden">
+                            <p class="font-garamond text-lg text-champagne italic">
+                                "O som da sua gargalhada é a minha melodia favorita. Nada se compara à alegria de fazer você rir."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="flip-card h-64 cursor-pointer perspective-1000" onclick="this.classList.toggle('flipped')">
+                    <div class="relative w-full h-full transform-style-3d">
+                        <!-- Front -->
+                        <div class="absolute inset-0 glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center border-goldPrimary/30 backface-hidden">
+                            <i class="fa-solid fa-infinity text-4xl text-goldPrimary mb-4"></i>
+                            <h3 class="font-cinzel text-xl font-bold text-champagne">Sua Essência</h3>
+                            <p class="text-xs text-goldLight/70 uppercase tracking-widest mt-2">Clique para revelar</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute inset-0 glass-card rounded-2xl p-6 flex items-center justify-center text-center border-goldPrimary bg-emeraldMedium/90 rotate-y-180 backface-hidden">
+                            <p class="font-garamond text-lg text-champagne italic">
+                                "Eu amo quem você é quando está comigo: autêntica, linda, forte e incrivelmente especial."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 5. CARTAS E DECLARAÇÕES (Interactive Letter Reveal Modal) -->
+        <section class="py-20 px-4 max-w-4xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 md:p-12 border-goldPrimary/40 relative overflow-hidden text-center shadow-2xl">
+                <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-goldPrimary/10 rounded-full blur-2xl"></div>
+                <div class="absolute -left-12 -top-12 w-48 h-48 bg-roseAccent/10 rounded-full blur-2xl"></div>
+
+                <i class="fa-solid fa-envelope-open-text text-5xl text-goldPrimary mb-6"></i>
+                <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-champagne mb-4">Uma Carta Apenas Para Você</h2>
+                <p class="font-garamond text-xl text-champagne/80 italic mb-8">
+                    "Escrevi com as palavras mais profundas que minha alma pôde encontrar..."
+                </p>
+
+                <button onclick="openLetterModal()" class="px-8 py-4 rounded-full bg-gradient-to-r from-goldDark via-goldPrimary to-goldLight text-emeraldDeep font-cinzel font-bold text-sm uppercase tracking-widest hover:shadow-[0_0_25px_rgba(223,183,108,0.6)] transition-all duration-300 transform hover:scale-105 active:scale-95">
+                    Abrir Minha Declaração
+                </button>
+            </div>
+        </section>
+
+        <!-- Letter Modal -->
+        <div id="letter-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-emeraldDeep/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500">
+            <div class="glass-card bg-emeraldDark/95 border-goldPrimary max-w-2xl w-full rounded-3xl p-6 md:p-10 relative max-h-[85vh] overflow-y-auto transform scale-95 transition-transform duration-500 shadow-2xl" id="letter-content">
+                <button onclick="closeLetterModal()" class="absolute top-6 right-6 text-champagne/60 hover:text-goldPrimary transition-colors text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="text-center mb-8">
+                    <span class="text-xs font-cinzel text-goldPrimary tracking-widest uppercase">Meu Amor Eterno</span>
+                    <h3 class="font-cinzel text-2xl md:text-3xl font-bold text-champagne mt-1">6 Meses Inesquecíveis</h3>
+                </div>
+
+                <div class="font-garamond text-lg md:text-xl text-champagne/90 leading-relaxed space-y-4 italic text-left">
+                    <p>Meu amor,</p>
+                    <p>
+                        Parece que foi ontem que demos os primeiros passos desta caminhada. Seis meses se passaram, mas dentro de mim sinto como se estivesse vivendo um conto bonito que não tem fim.
+                    </p>
+                    <p>
+                        Você me ensinou que o amor de verdade mora nos pequenos detalhes: no café compartilhado sem pressa, no abraço aconchegante depois de um dia longo, no som do seu riso e na serenidade de saber que encontrei meu par ideal.
+                    </p>
+                    <p>
+                        Obrigado por cada dia, por cada aprendizado e por me fazer um ser humano melhor a cada momento. Que este seja apenas o primeiro marco de uma jornada longa, radiante e repleta de felicidades ao seu lado.
+                    </p>
+                    <p class="text-right font-cinzel not-italic font-bold text-goldPrimary mt-6">
+                        Com todo o meu carinho e amor eterno, <br>
+                        <span class="text-champagne font-garamond italic font-normal">Para sempre seu.</span>
+                    </p>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button onclick="closeLetterModal()" class="px-6 py-2.5 rounded-full border border-goldPrimary/40 text-goldLight font-cinzel text-xs uppercase tracking-widest hover:bg-goldPrimary/10 transition-colors">
+                        Guardar no Coração
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="counter-box">
-          <div class="counter-value" id="days">120+</div>
-          <div class="counter-label">Dias</div>
-        </div>
-        <div class="counter-box">
-          <div class="counter-value" id="hours">2.880+</div>
-          <div class="counter-label">Horas</div>
-        </div>
-        <div class="counter-box">
-          <div class="counter-value">∞</div>
-          <div class="counter-label">Memórias</div>
-        </div>
-      </div>
+
+
+        <!-- 6. FINALE & INTERACTIVE SURPRISE -->
+        <section class="py-24 px-4 text-center relative">
+            <div class="max-w-3xl mx-auto glass-card rounded-3xl p-10 md:p-16 border-goldPrimary/50 shadow-2xl">
+                <div class="w-16 h-16 rounded-full bg-goldPrimary/20 flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-wand-magic-sparkles text-2xl text-goldPrimary"></i>
+                </div>
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold text-champagne mb-4">O Nosso Próximo Capítulo</h2>
+                <p class="font-garamond text-xl text-champagne/80 italic mb-10 max-w-xl mx-auto">
+                    Toque no botão abaixo para celebrar o nosso amor com uma chuva de luzes e bênçãos douradas!
+                </p>
+
+                <button id="surprise-btn" onclick="triggerFireworks()" class="relative group overflow-hidden rounded-full p-0.5 font-cinzel font-bold text-sm tracking-widest uppercase">
+                    <span class="absolute inset-0 bg-gradient-to-r from-goldDark via-goldLight to-goldPrimary group-hover:scale-105 transition-transform duration-300"></span>
+                    <span class="relative block px-10 py-5 rounded-full bg-emeraldDeep group-hover:bg-opacity-0 transition-all duration-300 text-goldLight group-hover:text-emeraldDeep font-bold text-base shadow-2xl">
+                        Aperte para Celebrar Nosso Amor <i class="fa-solid fa-sparkles ml-2"></i>
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 text-center text-xs font-cinzel tracking-widest text-champagne/40 border-t border-goldPrimary/10">
+            <p>Feito exclusivamente para a pessoa mais incrível deste mundo. 6 Meses de puro amor.</p>
+        </footer>
+
     </div>
 
-    <!-- Motivos para Amar -->
-    <div class="card">
-      <div class="card-title">💖 Algumas das Infinitas Razões</div>
-      <ul class="reasons-list">
-        <li class="reason-item">A forma única como você me olha quando está feliz.</li>
-        <li class="reason-item">O jeito que a sua presença deixa qualquer ambiente leve.</li>
-        <li class="reason-item">O companheirismo e o apoio que você me dá em cada detalhe.</li>
-        <li class="reason-item">Como a vida ficou infinitamente mais bonita depois que você chegou.</li>
-      </ul>
-    </div>
+    <script>
+        /* ----------------------------------------------------
+           1. CANVAS GOLD DUST & FLOATING HEARTS PARTICLES
+        ---------------------------------------------------- */
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
 
-    <!-- Área Interativa de Surpresa -->
-    <div class="interactive-zone">
-      <button class="btn-surprise" onclick="revealSurprise()">Clique Para Uma Promessa</button>
+        let particles = [];
+        const particleCount = 45;
 
-      <div class="card hidden-message" id="secretCard">
-        <div class="card-title" style="justify-content: center;">🌹 Meu Compromisso com Você</div>
-        <p class="message" style="text-align: center;">
-          Eu prometo continuar te ouvindo, te apoiando e te fazendo sorrir todos os dias. Prometo cuidar do nosso amor, valorizar cada segundo ao seu lado e construir um futuro lindo contigo. Que estes 4 meses sejam apenas o capítulo inicial de um livro sem fim. Eu te amo!
-        </p>
-      </div>
-    </div>
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
-    <footer>
-      Feito com todo o amor do mundo especialmente para você.
-    </footer>
-  </div>
+        class Particle {
+            constructor() {
+                this.reset();
+            }
 
-  <script>
-    // Gerador de Corações Flutuantes no Fundo
-    function createHeart() {
-      const container = document.getElementById('hearts-container');
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      
-      const symbols = ['♥', '💖', '💕', '💗'];
-      heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-      
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = Math.random() * 3 + 4 + 's';
-      heart.style.fontSize = Math.random() * 15 + 10 + 'px';
-      
-      container.appendChild(heart);
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height + canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 1 + 0.3;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.6 + 0.2;
+                this.isHeart = Math.random() < 0.25; // 25% hearts, rest gold dust
+                this.color = Math.random() < 0.5 ? '#dfb76c' : '#f5e2b3';
+            }
 
-      setTimeout(() => {
-        heart.remove();
-      }, 7000);
-    }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -20) {
+                    this.reset();
+                    this.y = canvas.height + 10;
+                }
+            }
 
-    setInterval(createHeart, 300);
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
 
-    // Revelar Mensagem Surpresa com Explosão de Corações
-    function revealSurprise() {
-      const card = document.getElementById('secretCard');
-      card.classList.toggle('show');
+                if (this.isHeart) {
+                    // Draw mini heart
+                    const x = this.x;
+                    const y = this.y;
+                    const size = this.size * 2;
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.bezierCurveTo(x - size / 2, y - size / 2, x - size, y + size / 3, x, y + size);
+                    ctx.bezierCurveTo(x + size, y + size / 3, x + size / 2, y - size / 2, x, y);
+                    ctx.fill();
+                } else {
+                    // Draw gold dust circle
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
 
-      // Efeito visual ao clicar
-      for(let i = 0; i < 25; i++) {
-        setTimeout(createHeart, i * 40);
-      }
-    }
-  </script>
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+
+        /* ----------------------------------------------------
+           2. LIVE RELATIONSHIP TIMER COUNTER
+        ---------------------------------------------------- */
+        // Assuming relationship started 182 days ago as default, continuously updating
+        const startDate = new Date();
+        startDate.setDate(startDate.getDate() - 182);
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor(diff / (1000 * 60));
+            const seconds = Math.floor(diff / 1000);
+
+            document.getElementById('days-counter').innerText = days.toLocaleString('pt-BR');
+            document.getElementById('hours-counter').innerText = hours.toLocaleString('pt-BR');
+            document.getElementById('minutes-counter').innerText = minutes.toLocaleString('pt-BR');
+            document.getElementById('seconds-counter').innerText = seconds.toLocaleString('pt-BR');
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+
+        /* ----------------------------------------------------
+           3. AUDIO PLAYER & VISUALIZER TOGGLE
+        ---------------------------------------------------- */
+        const bgMusic = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-toggle-btn');
+        const musicIcon = document.getElementById('music-icon');
+        const visualizer = document.getElementById('audio-visualizer');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    musicIcon.classList.remove('fa-play');
+                    musicIcon.classList.add('fa-pause');
+                    visualizer.classList.remove('paused');
+                }).catch(() => {
+                    // Audio context fallback / user interaction handling
+                });
+            } else {
+                bgMusic.pause();
+                isPlaying = false;
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+                visualizer.classList.add('paused');
+            }
+        });
+
+
+        /* ----------------------------------------------------
+           4. 3D PARALLAX TILT EFFECT FOR GALLERY CARDS
+        ---------------------------------------------------- */
+        const tiltCards = document.querySelectorAll('.tilt-card');
+
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+
+        /* ----------------------------------------------------
+           5. LETTER MODAL LOGIC
+        ---------------------------------------------------- */
+        function openLetterModal() {
+            const modal = document.getElementById('letter-modal');
+            const content = document.getElementById('letter-content');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modal.classList.add('opacity-100');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeLetterModal() {
+            const modal = document.getElementById('letter-modal');
+            const content = document.getElementById('letter-content');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+
+
+        /* ----------------------------------------------------
+           6. WAX SEAL CLICK BURST & CELEBRATION FIREWORKS
+        ---------------------------------------------------- */
+        function triggerSealEffect(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = (rect.left + rect.width / 2) / window.innerWidth;
+            const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+            confetti({
+                particleCount: 30,
+                spread: 60,
+                origin: { x: x, y: y },
+                colors: ['#dfb76c', '#f5e2b3', '#d47a85']
+            });
+        }
+
+        function triggerFireworks() {
+            const duration = 4 * 1000;
+            const animationEnd = Date.now() + duration;
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+
+                // Gold and Rose romantic explosions from both corners
+                confetti({
+                    particleCount: particleCount,
+                    startVelocity: 30,
+                    spread: 360,
+                    ticks: 60,
+                    origin: { MathMin: 0, x: Math.random(), y: Math.random() - 0.2 },
+                    colors: ['#dfb76c', '#f5e2b3', '#ffffff', '#d47a85', '#b88a38']
+                });
+            }, 250);
+        }
+    </script>
 </body>
 </html>

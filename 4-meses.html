@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 Meses Inesquecíveis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0d0d11;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --accent: #ff4b72;
+      --accent-glow: rgba(255, 75, 114, 0.4);
+      --text-main: #f0f0f5;
+      --text-muted: #a0a0b0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Container de Corações Animados no Fundo */
+    #hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: var(--accent);
+      opacity: 0.6;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-105vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Layout do Conteúdo */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 75, 114, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 75, 114, 0.6);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    /* Cards com Glassmorphism */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 75, 114, 0.4);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .message {
+      line-height: 1.8;
+      color: #e0e0ea;
+      font-weight: 300;
+      font-size: 1.05rem;
+      text-align: justify;
+    }
+
+    /* Contador Interativo */
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .counter-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .counter-value {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .counter-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Motivos Expandíveis */
+    .reasons-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .reason-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 15px 20px;
+      border-radius: 10px;
+      border-left: 3px solid var(--accent);
+      font-size: 0.95rem;
+      transition: background 0.3s ease;
+    }
+
+    .reason-item:hover {
+      background: rgba(255, 75, 114, 0.1);
+    }
+
+    /* Botão Surpresa Interativo */
+    .interactive-zone {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .btn-surprise {
+      background: linear-gradient(135deg, #ff4b72, #ff7597);
+      border: none;
+      color: #fff;
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px var(--accent-glow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-surprise:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(255, 75, 114, 0.6);
+    }
+
+    .btn-surprise:active {
+      transform: scale(0.98);
+    }
+
+    .hidden-message {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.8s cubic-bezier(0, 1, 0, 1);
+      opacity: 0;
+    }
+
+    .hidden-message.show {
+      max-height: 500px;
+      opacity: 1;
+      transition: max-height 0.8s cubic-bezier(1, 0, 1, 0), opacity 1s ease-in;
+      margin-top: 25px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.8rem; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="hearts-container"></div>
+
+  <div class="container">
+    <header>
+      <span class="badge">Nossa História</span>
+      <h1>4 Meses ao Seu Lado</h1>
+      <p class="subtitle">120 dias descobrindo que o amor pode ser leve, intenso e eterno.</p>
+    </header>
+
+    <!-- Cartão Principal de Declaração -->
+    <div class="card">
+      <div class="card-title">✨ Para o Amor da Minha Vida</div>
+      <p class="message">
+        Parece que foi ontem que começamos a escrever nossa história, mas ao mesmo tempo sinto como se te conhecesse de outras vidas. Nestes 4 meses, você transformou os meus dias simples em momentos inesquecíveis. O seu sorriso se tornou o meu lugar favorito no mundo e a sua voz, a minha calmaria. Obrigado por ser minha companheira, minha confidente e o meu porto seguro.
+      </p>
+    </div>
+
+    <!-- Contador de Tempo -->
+    <div class="card">
+      <div class="card-title">⏳ Tempo Colecionando Sorrisos</div>
+      <div class="counter-grid">
+        <div class="counter-box">
+          <div class="counter-value" id="months">4</div>
+          <div class="counter-label">Meses</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-value" id="days">120+</div>
+          <div class="counter-label">Dias</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-value" id="hours">2.880+</div>
+          <div class="counter-label">Horas</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-value">∞</div>
+          <div class="counter-label">Memórias</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motivos para Amar -->
+    <div class="card">
+      <div class="card-title">💖 Algumas das Infinitas Razões</div>
+      <ul class="reasons-list">
+        <li class="reason-item">A forma única como você me olha quando está feliz.</li>
+        <li class="reason-item">O jeito que a sua presença deixa qualquer ambiente leve.</li>
+        <li class="reason-item">O companheirismo e o apoio que você me dá em cada detalhe.</li>
+        <li class="reason-item">Como a vida ficou infinitamente mais bonita depois que você chegou.</li>
+      </ul>
+    </div>
+
+    <!-- Área Interativa de Surpresa -->
+    <div class="interactive-zone">
+      <button class="btn-surprise" onclick="revealSurprise()">Clique Para Uma Promessa</button>
+
+      <div class="card hidden-message" id="secretCard">
+        <div class="card-title" style="justify-content: center;">🌹 Meu Compromisso com Você</div>
+        <p class="message" style="text-align: center;">
+          Eu prometo continuar te ouvindo, te apoiando e te fazendo sorrir todos os dias. Prometo cuidar do nosso amor, valorizar cada segundo ao seu lado e construir um futuro lindo contigo. Que estes 4 meses sejam apenas o capítulo inicial de um livro sem fim. Eu te amo!
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      Feito com todo o amor do mundo especialmente para você.
+    </footer>
+  </div>
+
+  <script>
+    // Gerador de Corações Flutuantes no Fundo
+    function createHeart() {
+      const container = document.getElementById('hearts-container');
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      
+      const symbols = ['♥', '💖', '💕', '💗'];
+      heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+      
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+      heart.style.fontSize = Math.random() * 15 + 10 + 'px';
+      
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(createHeart, 300);
+
+    // Revelar Mensagem Surpresa com Explosão de Corações
+    function revealSurprise() {
+      const card = document.getElementById('secretCard');
+      card.classList.toggle('show');
+
+      // Efeito visual ao clicar
+      for(let i = 0; i < 25; i++) {
+        setTimeout(createHeart, i * 40);
+      }
+    }
+  </script>
+</body>
+</html>
